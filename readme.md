@@ -2,7 +2,7 @@
 
 ### Installation
 ```shell
-yarn add jobinsjp/vue3-flash
+yarn add @jobinsjp/vue3-flash
 ```
 
 ### Uses

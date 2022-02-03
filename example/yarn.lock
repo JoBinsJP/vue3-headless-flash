@@ -493,6 +493,11 @@ is-regex@^1.0.3:
     call-bind "^1.0.2"
     has-tostringtag "^1.0.0"
 
+jobinsjp-vue3-flash@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/jobinsjp-vue3-flash/-/jobinsjp-vue3-flash-0.0.1.tgz#8929820b749f148dbaeb605595a6d5f753586281"
+  integrity sha512-L1xkXKNHYC4RNnql6k0cfuNvDK6bYcVwe2ZE91VYdM0mNQQqZb8il5pT/eE8llBlvvDLB/e/okPXcxO9cRCCMQ==
+
 js-stringify@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/js-stringify/-/js-stringify-1.0.2.tgz#1736fddfd9724f28a3682adc6230ae7e4e9679db"

@@ -1,15 +1,23 @@
 <template>
     <div class="alert" :class="classes">
-        <span class="icon-holder">
-            <success-icon v-if="notification.type==='success'" stroke="#57c75c" fill="none" class="h-4 w-4"/>
-            <alert-error-icon v-else-if="notification.type==='error'" stroke="#9b4745" class="h-4 w-4" fill="none"/>
-            <info-icon v-else-if="notification.type==='info'" class="h-4 w-4" stroke="#327aa1"/>
-            <alert-warning-icon v-else-if="notification.type==='warning'" class="h-4 w-4" fill="none" stroke="#9f9727"/>
-        </span>
-        <p v-html="str.nl2br(notification.message)"/>
-        <a href="#" @click="handleHide">
-            <close-icon class="h-4 w-4" stroke="#ffffff" fill="none"/>
-        </a>
+            Hello I am flash Item
+            <template #icon>
+                I am Icon
+            </template>
+<!--            <template #message>-->
+<!--                I am message-->
+<!--            </template>-->
+<!--        <span class="icon-holder">-->
+<!--            &lt;!&ndash; <success-icon v-if="notification.type==='success'" stroke="#57c75c" fill="none" class="h-4 w-4"/>-->
+<!--            <alert-error-icon v-else-if="notification.type==='error'" stroke="#9b4745" class="h-4 w-4" fill="none"/>-->
+<!--            <info-icon v-else-if="notification.type==='info'" class="h-4 w-4" stroke="#327aa1"/>-->
+<!--            <alert-warning-icon v-else-if="notification.type==='warning'" class="h-4 w-4" fill="none" stroke="#9f9727"/> &ndash;&gt;-->
+<!--        </span>-->
+<!--        <p v-html="notification.message"/>-->
+<!--        <a href="#" @click="handleHide">-->
+<!--            *-->
+<!--            &lt;!&ndash; <close-icon class="h-4 w-4" stroke="#ffffff" fill="none"/> &ndash;&gt;-->
+<!--        </a>-->
     </div>
 </template>
 
@@ -19,21 +27,11 @@
         onMounted,
         defineComponent,
     }                       from "vue"
-    import AlertWarningIcon from "../Icons/AlaertWarningIcon"
-    import AlertErrorIcon   from "../Icons/AlertErrorIcon"
-    import CloseIcon        from "../Icons/CloseIcon"
-    import InfoIcon         from "../Icons/InfoIcon"
-    import SuccessIcon      from "../Icons/SuccessIcon"
-    import useStr           from "../../Utils/useStr"
+    // import useStr           from "../../Utils/useStr"
 
     export default defineComponent({
         name: "NotificationItem",
         components: {
-            CloseIcon,
-            SuccessIcon,
-            InfoIcon,
-            AlertErrorIcon,
-            AlertWarningIcon,
         },
         props: {
             notification: {
@@ -44,10 +42,10 @@
         emits: ["hide"],
 
         setup(props, context) {
-            const str = useStr()
+            // const str = useStr()
 
             onMounted(() => {
-                setTimeout(handleHide, 2000)
+                setTimeout(handleHide, 20000)
             })
 
             const classes = computed(() => {
@@ -66,7 +64,6 @@
             return {
                 classes,
                 handleHide,
-                str,
             }
         },
     })

@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		/* Set the JavaScript language version for emitted JavaScript and include 
+		/* Set the JavaScript language version for emitted JavaScript and include
        compatible library declarations. */
 		"target": "esnext",
 		/* Specify what JSX code is generated. */
@@ -39,5 +39,6 @@
 	],
 	"exclude": [
 		"**/node_modules",
+		"**/example"
 	]
 }

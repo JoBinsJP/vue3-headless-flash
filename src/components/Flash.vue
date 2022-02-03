@@ -1,10 +1,10 @@
 <template>
-    <div v-if="Object.keys(messages).length" class="alert-wrapper absolute  top-14 z-[9999]">
+    <div v-if="Object.keys(messages).length">
         <template v-for="(notification, index) in messages">
-            <flash-item v-if="notification.message!==''"
-                        :key="index"
-                        :notification="notification"
-                        @hide="hideFlash"/>
+            <slot :flash="notification"
+                  :click="(timestamp)=>hideFlash(timestamp)"
+                  :option="options.success">
+            </slot>
         </template>
     </div>
 </template>
@@ -17,13 +17,21 @@
         onMounted,
         ref,
     }                           from "vue"
-    import { FLASH_EVENT_NAME } from "/js/Constants"
-    import FlashItem            from "/components/  FlashItem"
+    import { FLASH_EVENT_NAME } from "../js/Constants"
+    // import FlashItem            from "./FlashItem.vue"
 
     export default defineComponent({
         name: "Flash",
 
-        components: { FlashItem },
+        props: {
+            options: {
+                type: Object,
+                required: false,
+                default: () => {},
+            },
+        },
+
+        // components: { FlashItem },
 
         setup() {
             const messages = ref([])

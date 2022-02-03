@@ -5,7 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var emitter = require('tiny-emitter/instance');
 var vue = require('vue');
 var Constants = require('../../../../../../js/Constants');
-var FlashItem = require('../../../../../../components/FlashItem');
+var FlashItem = require('../../../../../../components/  FlashItem');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 

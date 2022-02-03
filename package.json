@@ -1,7 +1,8 @@
 {
-	"name": "vue-flash",
-	"version": "1.0.0",
+	"name": "@jobinsjp/vue3-flash",
+	"version": "0.0.1",
 	"main": "dist/index.js",
+	"author": "bedus-creation",
 	"license": "MIT",
 	"devDependencies": {
 		"@vue/compiler-sfc": "^3.2.29",

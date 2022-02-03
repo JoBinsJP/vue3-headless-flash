@@ -1,12 +1,9 @@
-import emitter              from "tiny-emitter/instance"
+import emitter from "tiny-emitter/instance"
 import { FLASH_EVENT_NAME } from "./Constants"
-
+import { FlashType } from "../types/FlashType"
 class Flash {
     static success(message: String) {
-        emitter.emit("notification", {
-            type: "success",
-            message,
-        })
+        Flash.flash(message, FlashType.SUCCESS)
     };
 
     static error(message: String) {
