@@ -1,3 +1,4 @@
+import { FlashType } from "../types/FlashType";
 declare class Flash {
     static success(message: String): void;
     static error(message: String): void;

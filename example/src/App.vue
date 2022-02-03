@@ -1,45 +1,38 @@
 <template>
-    <button @click="success">Success</button>
-    <flash
-        class="absolute w-[200px] right-[20px] top-[20px]"
-        :options="{
-            success:{
-                icon: TickIcon,
-                class:'bg-green-500',
-                textColor:'text-white',
-                iconColor:'stroke-[#fff]'
-            }
-        }"
-        v-slot="slotProps">
-        <div class="relative flex justify-between rounded-md px-6 py-3 mb-2" :class="slotProps.option.class">
-            <div class="flex items-center">
-                <component :is="slotProps.option.icon" class="w-6 h-6" :class="slotProps.option.iconColor"/>
-                <div class="ml-2" :class="slotProps.option.textColor">
-                    {{ slotProps.flash.message }}
-                </div>
-            </div>
-            <button type="button" @click.stop="slotProps.click(slotProps.flash.timestamp)">
-                <XIcon class="border rounded-full p-1 w-5 h-5 stroke-[#fff]"/>
-            </button>
+    <div class="container mx-auto py-6">
+        <div class="w-2/3 mx-auto flex">
+            <h1 class="text-2xl pr-8 border-r border-gray-400" :class="currentRoute==='/'?'font-bold underline':''">
+                <a href="/">Basic Example</a>
+            </h1>
+            <h1 class="px-8 text-2xl" :class="currentRoute==='/complex'?'font-bold underline':''">
+                <a href="/complex">Complex Example</a>
+            </h1>
         </div>
-    </flash>
+    </div>
+    <transition>
+        <component :is="ROUTES[currentRoute]"/>
+    </transition>
 </template>
 <script lang="ts">
-    import { defineComponent } from "vue"
-    import Flash               from "../../src/js/Flash"
-    import TickIcon            from "./Icons/TickIcon.vue"
-    import XIcon               from "./Icons/XIcon.vue"
+    import {
+        defineComponent,
+        ref,
+    }                 from "vue"
+    import Basic   from "./Components/Basic.vue"
+    import Complex from "./Components/Complex.vue"
+
+    const ROUTES= {
+        "/" : Basic,
+        "/complex" : Complex,
+    }
 
     export default defineComponent({
-        components: { XIcon },
         setup() {
-            const success = () => {
-                Flash.success("Success")
-            }
+            const currentRoute = ref(window.location.pathname)
 
             return {
-                success,
-                TickIcon,
+                currentRoute,
+                ROUTES,
             }
         },
     })

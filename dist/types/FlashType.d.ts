@@ -1,4 +1,4 @@
-declare enum FlashType {
+export declare enum FlashType {
     SUCCESS = "success",
     ERROR = "error",
     INFO = "info",
