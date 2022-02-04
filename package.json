@@ -1,6 +1,6 @@
 {
 	"name": "vue3-headless-flash",
-	"version": "0.1.31",
+	"version": "0.1.32",
 	"main": "dist/index.js",
 	"author": "bedus-creation",
 	"license": "MIT",
