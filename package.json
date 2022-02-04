@@ -1,6 +1,6 @@
 {
-	"name": "@jobinsjp/vue3-flash",
-	"version": "0.0.1",
+	"name": "vue3-headless-flash",
+	"version": "0.1.2",
 	"main": "dist/index.js",
 	"author": "bedus-creation",
 	"license": "MIT",
@@ -10,9 +10,9 @@
 		"rollup-plugin-clear": "^2.0.7",
 		"rollup-plugin-typescript2": "^0.31.1",
 		"rollup-plugin-vue": "^6.0.0",
+		"tiny-emitter": "^2.1.0",
 		"typescript": "^4.5.5",
-		"vue": "^3.2.29",
-		"tiny-emitter": "^2.1.0"
+		"vue": "^3.2.29"
 	},
 	"scripts": {
 		"build": "rimraf dist && tsc && rollup -c rollup.config.js",
