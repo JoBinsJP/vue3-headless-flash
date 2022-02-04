@@ -1,31 +1,50 @@
 <template>
-    <div v-if="Object.keys(messages).length" class="alert-wrapper absolute  top-14 z-[9999]">
+    <div v-if="Object.keys(messages).length" :class="wrapperClass">
         <template v-for="(notification, index) in messages">
-            <flash-item v-if="notification.message!==''"
-                        :key="index"
-                        :notification="notification"
-                        @hide="hideFlash"/>
+            <slot :flash="notification"
+                  :click="(timestamp)=>hideFlash(timestamp)"
+                  :option="options[notification.type]">
+                <FlashDefaultItem :option="options[notification.type]" :flash="notification" @close="hideFlash"/>
+            </slot>
         </template>
     </div>
 </template>
 
 <script>
-    import emitter from "tiny-emitter/instance"
-
+    import emitter from "../utils/emitter.ts"
     import {
         defineComponent,
         onMounted,
         ref,
-    }                           from "vue"
-    import { FLASH_EVENT_NAME } from "/js/Constants"
-    import FlashItem            from "/components/  FlashItem"
+    }                       from "vue"
+    import {
+        DEFAULT_OPTIONS,
+        FLASH_EVENT_NAME,
+    }                       from "../js/Constants.ts"
+    import FlashDefaultItem from "./FlashDefaultItem.vue"
 
     export default defineComponent({
-        name: "Flash",
+        name: "FlashContainer",
+        components: { FlashDefaultItem },
+        props: {
+            timeout: {
+                type: Number,
+                required: false,
+                default: () => 2000,
+            },
+            options: {
+                type: Object,
+                required: false,
+                default: () => DEFAULT_OPTIONS,
+            },
+            wrapperClass: {
+                type: String,
+                required: false,
+                default: () => "absolute w-[200px] right-[20px] top-[20px]",
+            },
+        },
 
-        components: { FlashItem },
-
-        setup() {
+        setup(props) {
             const messages = ref([])
 
             onMounted(() => {
@@ -33,11 +52,15 @@
             })
 
             function handleFlashEvent({ message, type }) {
+                const timestamp = (new Date()).getTime()
+
                 messages.value.push({
-                    timestamp: (new Date()).getTime(),
+                    timestamp: timestamp,
                     type,
                     message,
                 })
+
+                setTimeout(() => hideFlash(timestamp), props.timeout)
             }
 
             function hideFlash(timestamp) {

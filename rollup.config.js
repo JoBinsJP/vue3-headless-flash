@@ -6,7 +6,7 @@ export default async function config(args) {
     return {
         input: 'src/index.ts',
         output: {
-            file: 'dist/bundle.js',
+            file: 'dist/index.js',
             format: 'cjs',
         },
         plugins: [
