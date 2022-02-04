@@ -1,4 +1,4 @@
-export const FLASH_EVENT_NAME: String = "flash"
+export const FLASH_EVENT_NAME: string = "flash"
 
 import InfoIcon     from "../Icons/InfoIcon.vue"
 import SuccessIcon  from "../Icons/SuccessIcon.vue"

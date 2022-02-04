@@ -19,7 +19,7 @@
                 <input type="number" v-model="data.timeout" class="flex-1 border rounded-md px-6 py-3">
             </div>
             <div class="flex justify-end">
-                <button @click="$emit('flash', data)" class="bg-yellow-500 px-6 py-3 rounded-md">Flash</button>
+                <button type="button" @click="$emit('flash', data)" class="bg-yellow-500 px-6 py-3 rounded-md">Flash</button>
             </div>
         </div>
     </div>

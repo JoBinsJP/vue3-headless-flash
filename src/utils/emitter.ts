@@ -1,3 +1,3 @@
-import TinyEmitter from 'tiny-emitter';
+import { TinyEmitter } from "tiny-emitter"
 
-export default new TinyEmitter;
+export default (new TinyEmitter)

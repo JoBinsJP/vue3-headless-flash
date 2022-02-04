@@ -1,6 +1,6 @@
 <template>
     <Setting @flash="flash"/>
-    <flash
+    <FlashContainer
         :timeout="timeout"
         wrapper-class="absolute w-[200px] right-[20px] bottom-[20px]"
         v-slot="slotProps">
@@ -15,21 +15,22 @@
             </div>
             <component :is="slotProps.option.icon" class="w-6 h-6" :class="slotProps.option.iconClass"/>
         </div>
-    </flash>
+    </FlashContainer>
 </template>
 
 <script>
     import {
         defineComponent,
         ref,
-    }               from "vue"
-    import Flash    from "../../../src/js/Flash"
-    import Setting  from "./Setting.vue"
+    }                from "vue"
+    import { Flash, FlashContainer } from "vue3-headless-flash"
+    import Setting   from "./Setting.vue"
 
     export default defineComponent({
         name: "CustomIcon",
         components: {
             Setting,
+            FlashContainer
         },
         setup() {
             const timeout = ref(2000)

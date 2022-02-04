@@ -1,6 +1,6 @@
 <template>
     <Setting @flash="flash"/>
-    <flash :timeout="timeout"/>
+    <FlashContainer :timeout="timeout"/>
 </template>
 
 <script>
@@ -8,12 +8,15 @@
         defineComponent,
         ref,
     }              from "vue"
-    import Flash   from "../../../src/js/Flash"
+    import {
+        Flash,
+        FlashContainer,
+    }              from "vue3-headless-flash"
     import Setting from "./Setting.vue"
 
     export default defineComponent({
         name: "Basic",
-        components: { Setting },
+        components: { Setting, FlashContainer },
         setup() {
             const timeout = ref(2000)
 

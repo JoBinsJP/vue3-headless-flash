@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import emitter          from "tiny-emitter/instance"
+    import emitter from "../utils/emitter.ts"
     import {
         defineComponent,
         onMounted,
@@ -24,7 +24,7 @@
     import FlashDefaultItem from "./FlashDefaultItem.vue"
 
     export default defineComponent({
-        name: "Flash",
+        name: "FlashContainer",
         components: { FlashDefaultItem },
         props: {
             timeout: {

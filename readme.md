@@ -2,7 +2,7 @@
 
 ### Installation
 ```shell
-yarn add @jobinsjp/vue3-flash
+yarn add vue3-headless-flash
 ```
 
 ### Uses
@@ -10,4 +10,4 @@ yarn add @jobinsjp/vue3-flash
 
 ## License
 
-MIT © [https://github.com/JoBinsJP/vue3-datatable](https://github.com/JoBinsJP/vue3-datatable)
+MIT © [https://github.com/JoBinsJP/vue3-headless-flash](https://github.com/JoBinsJP/vue3-headless-flash)

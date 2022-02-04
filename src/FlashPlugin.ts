@@ -1,8 +1,11 @@
-import { App, Plugin }  from 'vue';
-import Flash            from './components/Flash.vue';
+import {
+    App,
+    Plugin,
+}                     from "vue"
+import FlashContainer from "./components/Flash.vue"
 
 export const FlashPlugin: Plugin = {
     install(app: App) {
-        app.component('Flash', Flash)
-    }
+        app.component("FlashContainer", FlashContainer)
+    },
 }

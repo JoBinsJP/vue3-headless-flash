@@ -2,12 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var emitter = require('tiny-emitter/instance');
+var tinyEmitter = require('tiny-emitter');
 var vue = require('vue');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
-
-var emitter__default = /*#__PURE__*/_interopDefaultLegacy(emitter);
+var emitter = (new tinyEmitter.TinyEmitter);
 
 var script$5 = vue.defineComponent({
         name: "InfoIcon",
@@ -188,7 +186,7 @@ script$1.render = render$1;
 script$1.__file = "src/components/FlashDefaultItem.vue";
 
 var script = vue.defineComponent({
-        name: "Flash",
+        name: "FlashContainer",
         components: { FlashDefaultItem: script$1 },
         props: {
             timeout: {
@@ -212,10 +210,11 @@ var script = vue.defineComponent({
             const messages = vue.ref([]);
 
             vue.onMounted(() => {
-                emitter__default["default"].on(FLASH_EVENT_NAME, handleFlashEvent);
+                emitter.on(FLASH_EVENT_NAME, handleFlashEvent);
             });
 
             function handleFlashEvent({ message, type }) {
+                console.log("I am listing event");
                 const timestamp = (new Date()).getTime();
 
                 messages.value.push({
@@ -270,9 +269,44 @@ script.__file = "src/components/Flash.vue";
 
 const FlashPlugin = {
     install(app) {
-        app.component('Flash', script);
-    }
+        app.component("FlashContainer", script);
+    },
 };
 
-exports.Flash = script;
+var FlashType;
+(function (FlashType) {
+    FlashType["SUCCESS"] = "success";
+    FlashType["ERROR"] = "error";
+    FlashType["INFO"] = "info";
+    FlashType["WARNING"] = "warning";
+})(FlashType || (FlashType = {}));
+
+class Flash {
+    static success(message) {
+        Flash.flash(message, FlashType.SUCCESS);
+    }
+    ;
+    static error(message) {
+        Flash.flash(message, FlashType.ERROR);
+    }
+    ;
+    static info(message) {
+        Flash.flash(message, FlashType.INFO);
+    }
+    ;
+    static warning(message) {
+        Flash.flash(message, FlashType.WARNING);
+    }
+    ;
+    static flash(message, type) {
+        emitter.emit(FLASH_EVENT_NAME, {
+            type: type,
+            message,
+        });
+    }
+    ;
+}
+
+exports.Flash = Flash;
+exports.FlashContainer = script;
 exports.FlashPlugin = FlashPlugin;
