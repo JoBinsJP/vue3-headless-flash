@@ -12,7 +12,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
     import { defineComponent } from "vue"
     import ErrorIcon           from "../Icons/ErrorIcon.vue"
 

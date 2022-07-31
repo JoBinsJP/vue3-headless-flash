@@ -1,7 +1,4 @@
-import {
-    App,
-    Plugin,
-}                     from "vue"
+import { App, Plugin } from "vue"
 import FlashContainer from "./components/Flash.vue"
 
 export const FlashPlugin: Plugin = {

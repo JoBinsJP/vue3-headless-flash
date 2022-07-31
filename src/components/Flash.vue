@@ -1,26 +1,25 @@
 <template>
     <div v-if="Object.keys(messages).length" :class="wrapperClass">
         <template v-for="(notification, index) in messages">
-            <slot :flash="notification"
-                  :click="(timestamp)=>hideFlash(timestamp)"
-                  :option="options[notification.type]">
-                <FlashDefaultItem :option="options[notification.type]" :flash="notification" @close="hideFlash"/>
+            <slot
+                :flash="notification"
+                :click="(timestamp: Number) => hideFlash(timestamp)"
+                :option="options[notification.type]">
+                <FlashDefaultItem
+                    :option="options[notification.type]"
+                    :flash="notification"
+                    @close="hideFlash"
+                />
             </slot>
         </template>
     </div>
 </template>
 
-<script>
-    import emitter from "../utils/emitter.ts"
-    import {
-        defineComponent,
-        onMounted,
-        ref,
-    }                       from "vue"
-    import {
-        DEFAULT_OPTIONS,
-        FLASH_EVENT_NAME,
-    }                       from "../js/Constants.ts"
+<script lang="ts">
+    import { defineComponent, onMounted, ref } from "vue"
+    import { DEFAULT_OPTIONS, FLASH_EVENT_NAME } from "../js/Constants"
+    import { Message } from "../types"
+    import emitter from "../utils/emitter"
     import FlashDefaultItem from "./FlashDefaultItem.vue"
 
     export default defineComponent({
@@ -45,27 +44,25 @@
         },
 
         setup(props) {
-            const messages = ref([])
+            const messages = ref<Message[]>([])
 
             onMounted(() => {
                 emitter.on(FLASH_EVENT_NAME, handleFlashEvent)
             })
 
-            function handleFlashEvent({ message, type }) {
-                const timestamp = (new Date()).getTime()
+            const handleFlashEvent = (message: Message) => {
+                messages.value.push(message)
 
-                messages.value.push({
-                    timestamp: timestamp,
-                    type,
-                    message,
-                })
+                if (!props.timeout) {
+                    return
+                }
 
-                setTimeout(() => hideFlash(timestamp), props.timeout)
+                setTimeout(() => hideFlash(message.timestamp), props.timeout)
             }
 
-            function hideFlash(timestamp) {
+            const hideFlash = (timestamp: Number) => {
                 messages.value = messages.value.filter(
-                    notification => notification.timestamp !== timestamp,
+                    (notification) => notification.timestamp !== timestamp,
                 )
             }
 

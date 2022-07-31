@@ -1,5 +1,5 @@
+import { FlashType } from "../types/FlashType"
 import emitter from "../utils/emitter"
-import { FlashType }        from "../types/FlashType"
 import { FLASH_EVENT_NAME } from "./Constants"
 
 class Flash {
@@ -20,10 +20,13 @@ class Flash {
     };
 
     static flash(message: string, type: FlashType) {
+        const timestamp = new Date().getTime()
+
         emitter.emit(FLASH_EVENT_NAME, {
-                type: type,
-                message,
-            })
+            timestamp: timestamp,
+            type: type,
+            message,
+        })
     };
 }
 

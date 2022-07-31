@@ -19,18 +19,15 @@
 </template>
 
 <script>
-    import {
-        defineComponent,
-        ref,
-    }                from "vue"
-    import { Flash, FlashContainer } from "vue3-headless-flash"
-    import Setting   from "./Setting.vue"
+    import { defineComponent, ref } from "vue"
+    import { Flash, FlashContainer } from "../../src"
+    import Setting from "./Setting.vue"
 
     export default defineComponent({
         name: "CustomIcon",
         components: {
             Setting,
-            FlashContainer
+            FlashContainer,
         },
         setup() {
             const timeout = ref(2000)
