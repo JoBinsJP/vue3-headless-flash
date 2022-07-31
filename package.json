@@ -3,6 +3,7 @@
 	"version": "0.1.38",
 	"author": "bedus-creation",
 	"license": "MIT",
+	"types": "./types/lib.d.ts",
 	"files": [
 		"dist"
 	],
