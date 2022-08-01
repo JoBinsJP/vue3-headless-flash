@@ -8,10 +8,7 @@
         "jsx": "preserve",
         "sourceMap": true,
         "resolveJsonModule": true,
-        "types": [
-            "@types/node",
-            "src/types"
-        ],
+        "typeRoots": ["./node_modules/@types", "./src/types"],
         "isolatedModules": true,
         "esModuleInterop": true,
         "lib": [
