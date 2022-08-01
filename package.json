@@ -1,14 +1,14 @@
 {
 	"name": "vue3-headless-flash",
-	"version": "0.1.40",
+	"version": "0.1.41",
 	"author": "bedus-creation",
 	"license": "MIT",
-	"types": "./types/lib.d.ts",
 	"files": [
-		"dist/*"
+		"dist"
 	],
 	"main": "./dist/index.umd.js",
 	"module": "./dist/index.es.js",
+	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
 			"import": "./dist/index.es.js",
@@ -28,6 +28,7 @@
 		"@vitejs/plugin-vue": "^3.0.0",
 		"typescript": "^4.6.4",
 		"vite": "^3.0.0",
+		"vite-plugin-dts": "^1.4.0",
 		"vue-tsc": "^0.38.4"
 	}
 }
