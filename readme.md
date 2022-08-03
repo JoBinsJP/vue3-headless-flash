@@ -22,6 +22,7 @@ Step 1: Import the `FlashContainer` and `Flash`
 <script>
     import { defineComponent } from "vue"
     import { Flash, FlashContainer } from "vue3-headless-flash"
+    import "vue3-headless-flash/dist/style.css"
 
     export default defineComponent({
         components: {
