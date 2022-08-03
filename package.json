@@ -1,6 +1,6 @@
 {
     "name": "vue3-headless-flash",
-    "version": "0.1.42",
+    "version": "0.1.43",
     "description": "Vue3 headless flash component, make your flash looks like yours",
     "keywords": [
         "flash",
@@ -32,9 +32,10 @@
         }
     },
     "scripts": {
-        "dev": "vite",
-        "build": "vue-tsc --noEmit && vite build",
-        "preview": "vite preview"
+        "dev": "vite --config vite.example.ts",
+        "site:preview": "vite preview --config vite.example.ts",
+        "site:build": "vite build --config vite.example.ts",
+        "build": "vue-tsc --noEmit && vite build"
     },
     "dependencies": {
         "autoprefixer": "^10.4.8",
