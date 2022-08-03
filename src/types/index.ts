@@ -1,7 +1,25 @@
+import type { Component } from "vue"
+
+interface OptionInterface {
+    icon: Component,
+    class: string,
+    textClass: string,
+    iconClass: string,
+}
+
+enum FlashType {
+    SUCCESS = "SUCCESS",
+    ERROR = "ERROR",
+    INFO = "INFO",
+    WARNING = "WARNING",
+}
+
 interface Message {
     timestamp: number,
-    type: string,
+    type: keyof typeof FlashType,
     message: string
 }
 
-export { type Message }
+type OptionsType = Record<keyof typeof FlashType, OptionInterface>
+
+export { type Message, FlashType, type OptionInterface, type OptionsType }

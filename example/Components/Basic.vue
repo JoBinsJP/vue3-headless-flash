@@ -5,7 +5,7 @@
 
 <script>
     import { defineComponent, ref } from "vue"
-    import { Flash, FlashContainer } from "../../dist/index.es"
+    import { Flash, FlashContainer } from "../../src"
     import Setting from "./Setting.vue"
 
     export default defineComponent({

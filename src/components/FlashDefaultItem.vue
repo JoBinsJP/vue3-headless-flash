@@ -13,8 +13,9 @@
 </template>
 
 <script lang="ts">
-    import { defineComponent } from "vue"
-    import ErrorIcon           from "../Icons/ErrorIcon.vue"
+    import { defineComponent, PropType } from "vue"
+    import ErrorIcon from "../Icons/ErrorIcon.vue"
+    import { Message, OptionInterface } from "../types"
 
     export default defineComponent({
         name: "FlashDefaultItem",
@@ -22,11 +23,11 @@
         emits: ["close"],
         props: {
             flash: {
-                type: Object,
+                type: Object as PropType<Message>,
                 required: true,
             },
             option: {
-                type: Object,
+                type: Object as PropType<OptionInterface>,
                 required: true,
             },
         },

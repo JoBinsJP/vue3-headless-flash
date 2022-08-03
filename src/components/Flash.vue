@@ -1,6 +1,6 @@
 <template>
     <div v-if="Object.keys(messages).length" :class="wrapperClass">
-        <template v-for="(notification, index) in messages">
+        <template v-for="notification in messages">
             <slot
                 :flash="notification"
                 :click="(timestamp: Number) => hideFlash(timestamp)"
@@ -8,17 +8,18 @@
                 <FlashDefaultItem
                     :option="options[notification.type]"
                     :flash="notification"
-                    @close="hideFlash"
-                />
+                    @close="hideFlash"/>
             </slot>
         </template>
     </div>
 </template>
 
 <script lang="ts">
-    import { defineComponent, onMounted, ref } from "vue"
+    import type { Ref } from "vue"
+    import { defineComponent, onMounted, PropType, ref } from "vue"
+    import "../index.css"
     import { DEFAULT_OPTIONS, FLASH_EVENT_NAME } from "../js/Constants"
-    import { Message } from "../types"
+    import { FlashType, Message, OptionsType } from "../types"
     import emitter from "../utils/emitter"
     import FlashDefaultItem from "./FlashDefaultItem.vue"
 
@@ -32,7 +33,7 @@
                 default: () => 2000,
             },
             options: {
-                type: Object,
+                type: Object as PropType<OptionsType>,
                 required: false,
                 default: () => DEFAULT_OPTIONS,
             },
@@ -44,7 +45,7 @@
         },
 
         setup(props) {
-            const messages = ref<Message[]>([])
+            const messages: Ref<Message[]> = ref([])
 
             onMounted(() => {
                 emitter.on(FLASH_EVENT_NAME, handleFlashEvent)
@@ -69,6 +70,7 @@
             return {
                 messages,
                 hideFlash,
+                FlashType,
             }
         },
     })

@@ -1,8 +1,3 @@
 export { default as FlashContainer } from "./components/Flash.vue"
-import { FlashPlugin } from "./FlashPlugin"
-import Flash from "./js/Flash"
-
-export {
-    FlashPlugin,
-    Flash,
-}
+export { default as Flash } from "./js/Flash"
+export { FlashType } from "./types"
