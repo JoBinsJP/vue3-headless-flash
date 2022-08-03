@@ -13,15 +13,14 @@
         </div>
     </div>
     <transition>
-        <component :is="ROUTES[currentRoute]"/>
+        <div>
+            <component :is="ROUTES[currentRoute]"/>
+        </div>
     </transition>
 </template>
 <script lang="ts">
-    import {
-        defineComponent,
-        ref,
-    }              from "vue"
-    import Basic   from "./Components/Basic.vue"
+    import { defineComponent, ref } from "vue"
+    import Basic from "./Components/Basic.vue"
     import Complex from "./Components/Complex.vue"
 
     const ROUTES: { [key: string]: any } = {

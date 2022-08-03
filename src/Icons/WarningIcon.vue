@@ -4,10 +4,5 @@
     </svg>
 </template>
 
-<script>
-    import { defineComponent } from "vue"
-
-    export default defineComponent({
-        name: "WarningIcon",
-    })
+<script setup lang="ts">
 </script>

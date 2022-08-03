@@ -26,12 +26,9 @@
 </template>
 
 <script>
-    import {
-        defineComponent,
-        reactive,
-    } from "vue"
+    import { defineComponent, reactive } from "vue"
 
-    import { FlashType } from "../../../src/types/FlashType"
+    import { FlashType } from "../../src/types/index"
 
     export default defineComponent({
         name: "Setting",

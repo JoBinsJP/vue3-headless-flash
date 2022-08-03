@@ -1,8 +1,8 @@
+import { FlashType } from "../types/"
 import emitter from "../utils/emitter"
-import { FlashType }        from "../types/FlashType"
 import { FLASH_EVENT_NAME } from "./Constants"
 
-class Flash {
+export default class Flash {
     static success(message: string) {
         Flash.flash(message, FlashType.SUCCESS)
     };
@@ -19,12 +19,13 @@ class Flash {
         Flash.flash(message, FlashType.WARNING)
     };
 
-    static flash(message: string, type: FlashType) {
+    static flash(message: string, type: keyof typeof FlashType) {
+        const timestamp = new Date().getTime()
+
         emitter.emit(FLASH_EVENT_NAME, {
-                type: type,
-                message,
-            })
+            timestamp: timestamp,
+            type: type,
+            message,
+        })
     };
 }
-
-export default Flash

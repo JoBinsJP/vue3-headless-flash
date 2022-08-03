@@ -4,14 +4,8 @@
 </template>
 
 <script>
-    import {
-        defineComponent,
-        ref,
-    }              from "vue"
-    import {
-        Flash,
-        FlashContainer,
-    }              from "vue3-headless-flash"
+    import { defineComponent, ref } from "vue"
+    import { Flash, FlashContainer } from "../../src"
     import Setting from "./Setting.vue"
 
     export default defineComponent({
