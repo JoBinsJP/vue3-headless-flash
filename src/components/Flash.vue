@@ -47,6 +47,11 @@
         setup(props) {
             const messages: Ref<Message[]> = ref([])
 
+            onMounted(() => {
+                console.log('here')
+                emitter.on(FLASH_EVENT_NAME, handleFlashEvent)
+            })
+
             const handleFlashEvent = (message: Message) => {
                 messages.value.push(message)
 
@@ -56,8 +61,6 @@
 
                 setTimeout(() => hideFlash(message.timestamp), props.timeout)
             }
-
-            emitter.on(FLASH_EVENT_NAME, handleFlashEvent)
 
             const hideFlash = (timestamp: Number) => {
                 messages.value = messages.value.filter(

@@ -1,7 +1,7 @@
 <template>
     <div class="relative flex justify-between rounded-md px-6 py-3 mb-2" :class="option.class">
         <div class="flex items-center">
-            <component :is="option.icon" class="w-6 h-6" :class="option.iconClass"/>
+             <component :is="iconComponent" class="w-6 h-6" :class="option.iconClass"/>
             <div class="ml-2" :class="option.textClass">
                 {{ flash.message }}
             </div>
@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-    import { defineComponent, PropType } from "vue"
+    import { defineAsyncComponent, defineComponent, PropType } from "vue"
     import ErrorIcon from "../Icons/ErrorIcon.vue"
     import { Message, OptionInterface } from "../types"
 
@@ -36,8 +36,12 @@
                 emit("close", props.flash.timestamp)
             }
 
+
+            const iconComponent = defineAsyncComponent(() => import(/* @vite-ignore */props.option.icon))
+
             return {
                 close,
+                iconComponent,
             }
         },
     })

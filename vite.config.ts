@@ -20,7 +20,9 @@ export default defineConfig({
         },
     },
     plugins: [
-        vue(),
+        vue({
+            isProduction: true,
+        }),
         dts({
             outputDir: "dist",
             exclude: ["example"],
