@@ -1,5 +1,7 @@
+import { Component } from "vue"
+
 interface OptionInterface {
-    icon: string,
+    icon: Component | string,
     class: string,
     textClass: string,
     iconClass: string,

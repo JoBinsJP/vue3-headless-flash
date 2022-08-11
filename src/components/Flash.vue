@@ -48,7 +48,6 @@
             const messages: Ref<Message[]> = ref([])
 
             onMounted(() => {
-                console.log('here')
                 emitter.on(FLASH_EVENT_NAME, handleFlashEvent)
             })
 
