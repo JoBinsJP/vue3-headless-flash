@@ -93,47 +93,38 @@ Complete Example Looks Like:
         </div>
     </FlashContainer>
 </template>
-<script>
-    import { defineComponent } from "vue"
+<script setup>
     import { SucessIcon }      from "./IconPath"
     import { ErrorIcon }       from "./IconPath"
     import { WarningIcon }     from "./IconPath"
     import { InfoIcon }        from "./IconPath"
 
     const OPTIONS = {
-        success: {
+        SUCCESS: {
             icon: SuccessIcon,
             class: "bg-green-500",
             textClass: "text-white",
             iconClass: "stroke-[#fff]",
         },
-        error: {
+        ERROR: {
             icon: ErrorIcon,
             class: "bg-red-200",
             textClass: "text-red-500",
             iconClass: "stroke-red-500",
         },
-        info: {
+        INFO: {
             icon: InfoIcon,
             class: "bg-gray-300",
             textClass: "text-gray-600",
             iconClass: "stroke-gray-600",
         },
-        warning: {
+        WARNING: {
             icon: WarningIcon,
             class: "bg-yellow-400",
             textClass: "text-gray-800",
             iconClass: "stroke-gray-800",
-        },
-    }
-
-    export default defineComponent({
-        setup() {
-            return {
-                OPTIONS
-            }
         }
-    })
+    }
 </script>
 ```
 > Here all the options properties you have passed as params will access through slot's properties.
